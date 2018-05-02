@@ -34,7 +34,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    QDnsLookup *dns;
     QTcpSocket socket;
 };
 

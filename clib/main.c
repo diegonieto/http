@@ -72,6 +72,7 @@ int main(int argc, char *argv[]){
     fd = socket_connect(argc<4?"www.google.com":argv[1], argc<4?80:atoi(argv[3]));
     char *req = generate_http_request(argc<4?"www.google.com":argv[1], argc<4?"/":argv[2]);
     write(fd, req, strlen(req));
+    free(req);
     bzero(buffer, BUFFER_SIZE);
 
     while(read(fd, buffer, BUFFER_SIZE - 1) != 0){
