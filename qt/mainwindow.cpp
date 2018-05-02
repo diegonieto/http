@@ -35,8 +35,8 @@ void MainWindow::lookedUp(const QHostInfo &host)
         return;
     }
 
-    for (const QHostAddress &address : host.addresses())
-    {
+    if (!host.addresses().empty()) {
+        const QHostAddress address = host.addresses().first();
         log("Found address: " + address.toString());
         log("Connecting to socket");
         if (socket.state() == QAbstractSocket::ConnectedState) {
